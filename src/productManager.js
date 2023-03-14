@@ -107,21 +107,4 @@ class ProductManager {
   };
 }
 
-const product1 = new ProductManager("./products.json");
-// product1.getProducts();
-
-/* product1.addProduct(
-  "Chemex",
-  "Profesional coffee maker",
-  56,
-  "Sin imagen",
-  "abc123",
-  18
-);
-product1.getProducts(); */
-
-//product1.getProductById(1678227027256);
-
-//product1.updateProduct(1678227027256, 15);
-
-//product1.deleteProduct(1678227027256);
+module.exports = ProductManager;
