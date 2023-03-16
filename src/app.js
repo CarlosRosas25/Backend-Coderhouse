@@ -13,22 +13,18 @@ app.get("/products", async (request, response) => {
   let limit = request.query.limit;
 
   if (!limit || limit > products.length) return response.send({ products });
-  let limitedProducts = [];
-  for (i = 0; i < limit; i++) {
-    limitedProducts.push(products[i]);
-  }
+
+  let limitedProducts = products.slice(0, parseInt(limit));
   response.send({ limitedProducts });
 });
 
 app.get("/products/:pid", async (request, response) => {
-  let products = await productManager.getProducts();
   let productId = request.params.pid;
+  let productById = await productManager.getProductById(parseInt(productId));
 
-  let product = await products.find((e) => e.id == productId);
+  if (!productById) return response.send({ error: "Product not found" });
 
-  if (!product) return response.send({ error: "Product not found" });
-
-  response.send({ product });
+  response.send({ productById });
 });
 
 app.listen(PORT, () => {

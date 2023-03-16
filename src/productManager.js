@@ -54,6 +54,7 @@ class ProductManager {
 
       if (productFound) {
         console.log(productFound);
+        return productFound;
       } else {
         console.log("Product not found");
       }
